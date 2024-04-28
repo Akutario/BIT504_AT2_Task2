@@ -24,7 +24,6 @@ public class Cell {
     public void setContent(Player player) {
         this.content = player;
     }
-}
 
 	
 
