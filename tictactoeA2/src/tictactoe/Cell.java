@@ -1,24 +1,31 @@
+package tictactoe;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 public class Cell {
-    //content of this cell (empty, cross, nought)
-	Player content;
-	//row and column of this cell
-	int row, col;
-	
-	/** Constructor to initialise this cell with the specified row and col */
-	public Cell(int row, int col) {
-		
-		// TODO: Initialise the variables row, col 
+    // Content of this cell (empty, cross, naught)
+    Player content;
+    // Row and column of this cell
+    int row, col;
 
-		
-		
-		//TODO: call the method that sets the cell content to EMPTY
-		 
-	}
+    /** Constructor to initialise this cell with the specified row and col */
+    public Cell(int row, int col) {
+        // Initialize the variables row, col
+        this.row = row;
+        this.col = col;
+        // Call the method that sets the cell content to EMPTY
+        setContent(Player.EMPTY);
+    }
+
+    /** Set the content of this cell */
+    public void setContent(Player player) {
+        this.content = player;
+    }
+}
+
 	
 
 	/** Paint itself on the graphics canvas, given the Graphics context g */ 
