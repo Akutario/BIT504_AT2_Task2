@@ -54,14 +54,14 @@ public class Board {
                 && cells[2][2].getContent() == thePlayer)
             return true;
 		 
-		
-		// TODO: Check the diagonal in the other direction
-		
+     // Check the diagonal in the other direction
+        if (cells[0][2].getContent() == thePlayer && cells[1][1].getContent() == thePlayer
+                && cells[2][0].getContent() == thePlayer)
+            return true;
 
-		
-		//no winner, keep playing
-		return false;
-	}
+        // no winner, keep playing
+        return false;
+    }
 	
 	/**
 	 * Draws the grid (rows then columns) using constant sizes, then call on the
