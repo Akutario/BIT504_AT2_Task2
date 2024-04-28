@@ -1,8 +1,10 @@
 package tictactoe;
 
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
 
 public class GameMain extends JPanel implements MouseListener {
     // Constants for game
@@ -28,7 +30,7 @@ public class GameMain extends JPanel implements MouseListener {
 
     // Enumeration for game states
     public enum GameState {
-        PLAYING, DRAW, CROSS_WON, NOUGHT_WON
+        PLAYING, DRAW, CROSS_WON, NOUGHT_WON;
     }
 
     private GameState currentState;
@@ -68,7 +70,8 @@ public class GameMain extends JPanel implements MouseListener {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 // create a main window to contain the panel
-                JFrame frame = new JFrame(TITLE);
+                JFrame frame = new JFrame();
+                frame.setTitle(TITLE);
 
                 // create the new GameMain panel and add it to the frame
                 GameMain gameMain = new GameMain();
@@ -84,6 +87,7 @@ public class GameMain extends JPanel implements MouseListener {
         });
     }
 
+
     /**
      * Custom painting codes on this JPanel
      */
@@ -95,9 +99,10 @@ public class GameMain extends JPanel implements MouseListener {
         board.paint(g);
 
         // Set status bar message based on game state
+     // Set status bar message based on game state
         if (currentState == GameState.PLAYING) {
             statusBar.setForeground(Color.BLACK);
-            if (currentPlayer == Player.CROSS) {
+            if (currentPlayer == Player.Cross) {
                 // Display "X"'s Turn message on the status bar
                 statusBar.setText("X's Turn");
             } else {
@@ -114,6 +119,7 @@ public class GameMain extends JPanel implements MouseListener {
             statusBar.setForeground(Color.RED);
             statusBar.setText("'O' Won! Click to play again.");
         }
+
     }
 
     /**
@@ -124,11 +130,11 @@ public class GameMain extends JPanel implements MouseListener {
         for (int row = 0; row < ROWS; ++row) {
             for (int col = 0; col < COLS; ++col) {
                 // all cells empty
-                board.cells[row][col].setContent(Player.EMPTY);
+                board.cells[row][col].setContent(Player.Empty);
             }
         }
         currentState = GameState.PLAYING;
-        currentPlayer = Player.CROSS;
+        currentPlayer = Player.Cross;
     }
 
     /**
@@ -142,7 +148,7 @@ public class GameMain extends JPanel implements MouseListener {
         if (board.hasWon(thePlayer, row, col)) {
             // Check which player has won and update the currentState to the appropriate
             // GameState for the winner
-            if (thePlayer == Player.CROSS) {
+            if (thePlayer == Player.Cross) {
                 currentState = GameState.CROSS_WON;
             } else {
                 currentState = GameState.NOUGHT_WON;
@@ -171,16 +177,16 @@ public class GameMain extends JPanel implements MouseListener {
         int colSelected = mouseX / CELL_SIZE;
         if (currentState == GameState.PLAYING) {
             if (rowSelected >= 0 && rowSelected < ROWS && colSelected >= 0 && colSelected < COLS
-                    && board.cells[rowSelected][colSelected].getContent() == Player.EMPTY) {
+                    && board.cells[rowSelected][colSelected].getContent() == Player.Empty) {
                 // move
                 board.cells[rowSelected][colSelected].setContent(currentPlayer);
                 // update currentState
                 updateGame(currentPlayer, rowSelected, colSelected);
                 // Switch player
-                if (currentPlayer == Player.CROSS) {
-                    currentPlayer = Player.NOUGHT;
+                if (currentPlayer == Player.Cross) {
+                    currentPlayer = Player.Nought;
                 } else {
-                    currentPlayer = Player.CROSS;
+                    currentPlayer = Player.Cross;
                 }
             }
         } else {
