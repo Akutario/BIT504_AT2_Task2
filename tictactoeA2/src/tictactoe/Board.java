@@ -36,24 +36,21 @@ public class Board {
         return true;
     }
     
-    
 	
-    /** Return true if the current player "thePlayer" has won after making their move */
-    public boolean hasWon(Player thePlayer, int playerRow, int playerCol) {
-        // check if player has 3-in-that-row
-        if (cells[playerRow][0].getContent() == thePlayer && cells[playerRow][1].getContent() == thePlayer
-                && cells[playerRow][2].getContent() == thePlayer)
-            return true;
-
-        // Check if the player has 3 in the playerCol.
-        if (cells[0][playerCol].getContent() == thePlayer && cells[1][playerCol].getContent() == thePlayer
-                && cells[2][playerCol].getContent() == thePlayer)
-            return true;
-
-        // 3-in-the-diagonal
-        if (cells[0][0].getContent() == thePlayer && cells[1][1].getContent() == thePlayer
-                && cells[2][2].getContent() == thePlayer)
-            return true;
+   	/** Return true if the current player "thePlayer" has won after making their move  */
+	public boolean hasWon(Player thePlayer, int playerRow, int playerCol) {
+		 // check if player has 3-in-that-row
+		if(cells[playerRow][0].content == thePlayer && cells[playerRow][1].content == thePlayer && cells[playerRow][2].content == thePlayer )
+			return true; 
+		
+		 // TODO: Check if the player has 3 in the playerCol.
+		 // Hint: Use the row code above as a starting point, remember that it goes cells[row][column] 
+		
+		
+		
+		 // 3-in-the-diagonal
+		if( cells[0][0].content == thePlayer && cells[1][1].content == thePlayer && cells[2][2].content == thePlayer)
+			return true;
 		 
 		
 		// TODO: Check the diagonal in the other direction
