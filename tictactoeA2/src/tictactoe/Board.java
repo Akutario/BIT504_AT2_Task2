@@ -1,26 +1,26 @@
-import java.awt.*;
+package tictactoe;
+
+
+import java.awt.Color;
+import java.awt.Graphics;
 
 public class Board {
-	// grid line width
-	public static final int GRID_WIDTH = 8;
-	// grid line half width
-	public static final int GRID_WIDHT_HALF = GRID_WIDTH / 2;
-	
-	//2D array of ROWS-by-COLS Cell instances
-	Cell [][] cells;
-	
-	/** Constructor to create the game board */
-	public Board() {
-		
-	 //TODO: initialise the cells array using ROWS and COLS constants 
+    private static final int GRID_WIDTH = 8; // Define GRID_WIDTH
+    private static final int GRID_WIDHT_HALF = GRID_WIDTH / 2; // Define GRID_WIDHT_HALF
 
-		
-		for (int row = 0; row < GameMain.ROWS; ++row) {
-			for (int col = 0; col < GameMain.COLS; ++col) {
-				cells[row][col] = new Cell(row, col);
-			}
-		}
-	}
+    private Cell[][] cells;
+
+    /** Constructor to create the game board */
+    public Board() {
+        // Initialize the cells array using ROWS and COLS constants
+        cells = new Cell[GameMain.ROWS][GameMain.COLS];
+
+        for (int row = 0; row < GameMain.ROWS; ++row) {
+            for (int col = 0; col < GameMain.COLS; ++col) {
+                cells[row][col] = new Cell(row, col);
+            }
+        }
+    }
 	
 
 	 /** Return true if it is a draw (i.e., no more EMPTY cells) */ 
