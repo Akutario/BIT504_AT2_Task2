@@ -144,8 +144,11 @@ public class GameMain extends JPanel implements MouseListener {
      * stays as PLAYING
      */
     public void updateGame(Player thePlayer, int row, int col) {
+        // Update the board with the player's move
+        board.makeMove(thePlayer, row, col);
+
         // Check for win after play
-        if (board.hasWon(thePlayer, row, col)) {
+        if (board.hasWon(thePlayer)) {
             // Check which player has won and update the currentState to the appropriate
             // GameState for the winner
             if (thePlayer == Player.Cross) {
@@ -159,6 +162,7 @@ public class GameMain extends JPanel implements MouseListener {
         }
         // Otherwise, no change to currentState of playing
     }
+
 
     /**
      * Event handler for the mouse click on the JPanel. If selected cell is valid
