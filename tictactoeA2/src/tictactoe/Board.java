@@ -22,10 +22,21 @@ public class Board {
             }
         }
     }
-
     /** Return true if it is a draw (i.e., no more EMPTY cells) */
     public boolean isDraw() {
-        // Check whether the game has ended in a draw.
+        // Check if there is a winner, if yes, it's not a draw
+        for (int row = 0; row < GameMain.ROWS; ++row) {
+            for (int col = 0; col < GameMain.COLS; ++col) {
+                if (cells[row][col].getContent() != null) {
+                    Player currentPlayer = cells[row][col].getContent();
+                    if (hasWon(currentPlayer, row, col)) {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        // Check whether all cells are filled
         for (int row = 0; row < GameMain.ROWS; ++row) {
             for (int col = 0; col < GameMain.COLS; ++col) {
                 if (cells[row][col].getContent() == null) {
@@ -35,6 +46,7 @@ public class Board {
         }
         return true;
     }
+
 
     /** Return true if the current player "thePlayer" has won after making their move */
     public boolean hasWon(Player thePlayer, int playerRow, int playerCol) {
