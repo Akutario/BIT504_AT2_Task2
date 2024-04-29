@@ -1,7 +1,5 @@
-/**
- * Enumeration for the players move
- */
+package tictactoe;
 
 public enum Player {
-	Empty, Cross, Nought
+    Empty, Cross, Nought;
 }
